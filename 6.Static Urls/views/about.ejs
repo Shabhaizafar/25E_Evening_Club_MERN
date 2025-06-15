@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gopi Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Color variables */
+    :root {
+      --gold-light:  #fff4d6;
+      --gold:        #D4AF37;
+      --gold-dark:   #A7851C;
+      --dark:        #2a2a2a;
+      --white:       #ffffff;
+    }
+
+    /* Reset box-sizing and spacing */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Set custom cursor for page */
+    html, body {
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='63' height='63'><defs><radialGradient id='g'><stop offset='0%' stop-color='%23FFD700'/><stop offset='100%' stop-color='%23FFA500'/></radialGradient></defs><circle cx='31.5' cy='31.5' r='28' fill='url(%23g)'/></svg>") 31 31, auto;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--gold-light);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Scroll progress bar styling */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: transparent;
+      z-index: 1000;
+    }
+    #scroll-progress-bar {
+      height: 100%; width: 0%;
+      background: var(--gold);
+      transition: width 0.1s ease-out;
+    }
+
+    /* Layout for left and right panels */
+    .left, .right { width: 50%; position: relative; }
+
+    /* Responsive adjustments */
+    @media(max-width: 800px) {
+      body { flex-direction: column; }
+      .left, .right { width: 100%; }
+    }
+
+    /* Left panel styles */
+    .left { overflow: hidden; }
+    .blob { position: absolute; top: 0; left: 0; height: 100%; min-width: 100%; object-fit: cover; }
+    .hello { position: absolute; top: 10%; left: 0; width: 80%; transform: rotate(-12deg); pointer-events: none; }
+    .portrait { position: absolute; bottom: 0; left: 5%; height: 95%; width: auto; max-width: 90%; }
+
+    @media(max-width: 800px) {
+      .hello { top: 5%; width: 120%; }
+      .portrait { left: 50%; transform: translateX(-50%); height: 60%; }
+    }
+
+    /* Right panel styles */
+    .right {
+      padding: 10vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--gold-light);
+    }
+    .right h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px var(--gold);
+    }
+    .right p {
+      font-size: 1rem;
+      color: var(--dark);
+      line-height: 1.6;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Call-to-Action Button */
+    .cta {
+      display: inline-block;
+      padding: 0.75em 1.5em;
+      background: var(--gold);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .cta::after {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.25);
+      transform: skewX(-30deg);
+      transition: left 0.5s;
+    }
+    .cta:hover { transform: scale(1.05); }
+    .cta:hover::after { left: 200%; }
+
+    @media(max-width: 800px) {
+      .right { padding: 5vw; }
+      .right p { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Left side with images -->
+  <div class="left">
+    <img src="https://ik.imagekit.io/gopichakradhar/assets/blob11.png" alt="Blob Background" class="blob">
+    <img src="https://ik.imagekit.io/gopichakradhar/assets/hello.svg" alt="Hello Text" class="hello">
+    <img src="https://ik.imagekit.io/gopichakradhar/assets/super-removebg-preview.png" alt="Portrait Image" class="portrait">
+  </div>
+
+  <!-- Right side with textual content -->
+  <div class="right">
+    <h2>ABOUT</h2>
+    <p>
+      Mandepudi Gopi Chakradhar, better known as Gopi, discovered his passion for technology and coding during his school days in Khammam.
+    </p>
+    <p>
+      He pursued Computer Science at IIITDM Kurnool, enhancing skills in full-stack development, machine learning, and practical projects.
+    </p>
+    <a href="https://gopi-chakradhar.vercel.app/" class="cta">View Portfolio</a>
+  </div>
+
+</body>
+</html>
