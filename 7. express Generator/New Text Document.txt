@@ -1,0 +1,19 @@
+express generator(globally): 
+CMD : 
+
+	step 1 : install express generator
+		 npm i express-generator -g
+	
+	step 2 : folder dir 
+
+	step 3 : create app 
+		express projectname --view=ejs
+
+	step 4 :  cd projectname
+	
+	step 5 : npm install/npm i
+
+	step 6 : open folder in vs Code 
+		 code .
+	
+	step 7 : nothing
