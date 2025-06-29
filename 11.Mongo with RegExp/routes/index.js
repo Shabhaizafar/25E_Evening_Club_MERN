@@ -48,18 +48,33 @@ router.get('/allstudent',async function(req, res) {
 });
 
 
-router.get('/find',async function(req, res) {
-  // var allstudents = await student.find({firstname : "Ravi"});
+// router.get('/find',async function(req, res) {
+//   // var allstudents = await student.find({firstname : "Ravi"});
+//   // var finddata = new RegExp(search,mode);
+//   // var finddata = new RegExp("ravi","i");
 
-  // var finddata = new RegExp(search,mode);
-  // var finddata = new RegExp("ravi","i");
+//   var finddata = new RegExp("^ravi$","i");
 
-  var finddata = new RegExp("^ravi$","i");
+//   var allstudents = await student.find({firstname : finddata});
+//   res.send(allstudents);
+// });
 
-  var allstudents = await student.find({firstname : finddata});
+
+
+router.get('/find29',async function(req, res) {
+  // var d = new RegExp("ravi",'i');
+  // var allstudents = await student.find({firstname : d});
+  // var allstudents = await student.findOne({firstname : d});
+  // var allstudents = await student.find();
+  var d = new RegExp("cricket",'i');
+  var allstudents = await student.findOne({Hobbies :  [d]});
   res.send(allstudents);
 });
 
-
+router.get('/delete',async function(req,res){
+  var st = await student.findOneAndDelete({firstname : "Dev"});
+  console.log(st);
+  res.send("Check Console");
+});
 
 module.exports = router;
