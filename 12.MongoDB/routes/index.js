@@ -20,7 +20,7 @@ router.post('/submit',async function (req,res) {
         email : obj.email,
         password : obj.password
     });
-    res.send("Registration Successfully Done !!");
+    res.render('error');
     }
 });
 
