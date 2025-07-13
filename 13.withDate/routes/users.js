@@ -1,15 +1,12 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/withDate');
+mongoose.connect('mongodb://127.0.0.1:27017/withurl');
 
-var register =  mongoose.Schema({
+var myurl =  mongoose.Schema({
   firstname : String,
-  joining_date : {
-    type : Date,
-    default : Date.now()
-  }
+  url : String
 });
 
 
-module.exports = mongoose.model("register",register);
+module.exports = mongoose.model("myurl",myurl);
