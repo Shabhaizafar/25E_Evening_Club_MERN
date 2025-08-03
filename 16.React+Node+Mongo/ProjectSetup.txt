@@ -1,0 +1,105 @@
+Backend :
+Step 1: 
+	Setup Backend (Node.js + Express) : 
+			1. 	mkdir backend                       (mkdir : create a Folder     {syntax : mkdir foldername})
+			2.    cd backend    				 (cd : goto folder(same directory)   {syntax : cd foldername})
+			3.	npm init -y				 (create a File package.json)
+			4. 	npm install/i express cors	 (installation for libriaries)  
+								express   : Use for Server Creation
+								cors 	: Use for connectivity node with react.
+			
+			5 :  In Backend Folder : 
+						create a new File with ".js" extenstion 
+						(server.js / index.js)
+
+				in "server.js"
+					const express = require("express");
+					const cors = require("cors");
+					const app = express();
+
+					app.use(cors()); // allow cross-origin requests
+					app.use(express.json()); // parse JSON
+
+					app.get("/api/message", (req, res) => {
+					  res.json({ message: "Hello from Node.js backend!",name : "Royal" });
+					});
+
+					app.listen(5000, () => {
+					  console.log(`Server is running on http://localhost:${PORT}`);
+					});
+
+----------------------------------------------------------------------------------------
+Frontend :   (Must be Verify you are not in Backend directory)
+Step 2: Setup Frontend (React.js) 
+			1.	npx create-react-app frontend     ( create-react-app : installation all Requirement for react Project)  frontend : folder name
+			2	cd frontend  		 (cd : goto folder(same directory)   {syntax : cd foldername})
+
+			3. write in src/App.js
+					import React  from "react";	
+					import {useEffect,useState} from 'react';
+					import useEffect from 'react';
+
+					function App() {
+					  const [msg, setMsg] = useState("Royal");
+
+					  useEffect(() => {
+					    fetch("http://localhost:5000/api/message")
+					      .then((res) => res.json())
+					      .then((data) => setMsg(data.message));
+					  },[]);
+
+					  return (
+					    <div>
+					      <h1>React - Node.js Connection</h1>
+					      <p>Message from backend: {msg}</p>
+					    </div>
+					  );
+					}
+
+					export default App;
+
+
+------------------------------------------------------------------------------
+Run Code : 
+Step : 3 
+		1. Must be run Backend First 
+			new Terminal : 
+				cd backend 
+				node server.js / nodemon server.js(if nodemon exist)
+
+			Another Terminal : 
+				cd frontend 
+				npm start  / npm dev 
+
+
+
+-----------------------------------------------------------------------------------
+Additional :
+	terminal : 
+		1. cd backend
+		2. npm install dotenv
+		3. create .env file (backend/.env)
+
+	in .env : 
+		PORT=5000   (Ne Careful : ignore wirte in String )
+		PORT="5000"   (Valid But not Proper)
+
+	now change your server.js 
+					require("dotenv").config();
+					const express = require("express");
+					const cors = require("cors");
+					const app = express();
+					app.use(cors()); // allow cross-origin requests
+					app.use(express.json()); // parse JSON
+
+					const PORT = process.env.PORT || 5000;
+					app.get("/api/message", (req, res) => {
+					  res.json({ message: "Hello from Node.js backend!",name : "Royal" });
+					});
+
+					app.listen(PORT, () => {
+					  console.log(`Server is running on http://localhost:${PORT}`);
+					});
+
+
+	
